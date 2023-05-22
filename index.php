@@ -6,7 +6,7 @@ $numeri = '0123456789';
 $simboli = '!#%^*-_,.?';
 
 $opzioneScelta = '';
-$lineascelta = '';
+$passwordFinale = '';
 
 $caratteriScelti = isset($_GET['caratteriScelti']);
 $lunghezzaPassword = isset($_GET['lunghezzaPassword']);
@@ -48,18 +48,18 @@ if ($caratteriScelti && $_GET['caratteriScelti']) {
 };
 
 function generaPassword($opzioneScelta,$lunghezzaPassword) {
-    var_dump(str_shuffle($opzioneScelta));
     $lunghezzaMax = strlen($opzioneScelta) - 1;
-    $passowrd = '';
+    $password = '';
 
-
-    for ($i = 0; $i <= $lunghezzaPassword; $i++) {
+    for ($i = 1; $i <= $lunghezzaPassword; $i++) {
         $carattere = $opzioneScelta[rand(0, $lunghezzaMax)];
-        var_dump ($carattere);
-
-
+        $password .= $carattere;
     }
+    return  $password;
+
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -89,11 +89,15 @@ function generaPassword($opzioneScelta,$lunghezzaPassword) {
       <input type="checkbox" id="music" name="caratteriScelti[]" value="4" />
       <label for="music">Caratteri speciali</label>
     </div>
-    <input type="number" name='lunghezzaPassword' onclick =<?php generaPassword($opzioneScelta,$lunghezzaPassword) ?>>
-
-
-
-    <button> vai!</button>
+    <input type="number" name='lunghezzaPassword'>    
+    <button> vai!</button>    
+    <p>
+        <?php if ($opzioneScelta !== '') {
+            $passwordFinale = generaPassword($opzioneScelta,$lunghezzaPassword);
+            echo "LA TUA PASSWORD E' : " . $passwordFinale;
+        }
+        ?>
+    </p>
 </form>
     
 </body>

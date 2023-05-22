@@ -54,6 +54,9 @@ if ($caratteriScelti && $_GET['caratteriScelti']) {
 
 function generaPassword($opzioneScelta,$lunghezzaPassword,$ripetizione) {
     $lunghezzaMax = strlen($opzioneScelta) - 1;
+    if ($lunghezzaPassword > $lunghezzaMax){
+        $lunghezzaPassword = $lunghezzaMax;
+    }
     $password = '';
 
     for ($i = 1; $i <= $lunghezzaPassword; $i++) {

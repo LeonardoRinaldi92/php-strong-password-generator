@@ -5,10 +5,44 @@ $maiuscole = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 $numeri = '0123456789';
 $simboli = '!#%^*-_,.?';
 
+$opzioneScelta = '';
+$lineascelta = '';
+
 $charType = isset($_GET['charType']);
 
 if ($charType && $_GET['charType']) {
-    var_dump(implode('',$_GET['charType']));
+    
+    $opzioneScelta = implode('',$_GET['charType']);
+    var_dump($opzioneScelta);
+
+    if ($opzioneScelta == '1') {
+        $opzioneScelta = $minuscole;
+    } else if ($opzioneScelta == '12') {
+        $opzioneScelta = $minuscole . $maiuscole;
+    } else if ($opzioneScelta == '123') {
+        $opzioneScelta = $minuscole . $maiuscole . $numeri ;
+    } else if ($opzioneScelta == '1234') {
+        $opzioneScelta = $minuscole . $maiuscole . $numeri . $simboli ;
+    } else if ($opzioneScelta == '13') {
+        $opzioneScelta = $minuscole . $numeri ;
+    } else if ($opzioneScelta == '14') {
+        $opzioneScelta = $minuscole . $simboli ;
+    } else if ($opzioneScelta == '2') {
+        $opzioneScelta = $maiuscole;
+    } else if ($opzioneScelta == '23') {
+        $opzioneScelta = $maiuscole . $numeri ;
+    } else if ($opzioneScelta == '24') {
+        $opzioneScelta = $minuscole . $simboli ;
+    } else if ($opzioneScelta == '234') {
+        $opzioneScelta = $minuscole . $numeri . $simboli;
+    } else if ($opzioneScelta == '3') {
+        $opzioneScelta = $numeri ;
+    } else if ($opzioneScelta == '34') {
+        $opzioneScelta = $numeri . $simboli ;
+    } else if ($opzioneScelta == '4') {
+        $opzioneScelta = $simboli ;
+    }
+    var_dump($opzioneScelta);
 };
 ?>
 <!DOCTYPE html>
@@ -21,7 +55,7 @@ if ($charType && $_GET['charType']) {
 </head>
 <body>
 
-<legend>Choose your interests</legend>
+<legend>Cosa vuoi includere?</legend>
 <form method="GET" action="index.php">
     <div>
       <input type="checkbox" id="coding" name="charType[]" value="1" />

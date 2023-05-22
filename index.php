@@ -8,13 +8,17 @@ $simboli = '!#%^*-_,.?';
 $opzioneScelta = '';
 $lineascelta = '';
 
-$charType = isset($_GET['charType']);
+$caratteriScelti = isset($_GET['caratteriScelti']);
+$lunghezzaPassword = isset($_GET['lunghezzaPassword']);
 
-if ($charType && $_GET['charType']) {
+if ($lunghezzaPassword && $_GET['lunghezzaPassword']) {
+    $lunghezzaPassword = $_GET['lunghezzaPassword'];
+    var_dump($lunghezzaPassword);
+};
+
+if ($caratteriScelti && $_GET['caratteriScelti']) {
     
-    $opzioneScelta = implode('',$_GET['charType']);
-    var_dump($opzioneScelta);
-
+    $opzioneScelta = implode('',$_GET['caratteriScelti']);
     if ($opzioneScelta == '1') {
         $opzioneScelta = $minuscole;
     } else if ($opzioneScelta == '12') {
@@ -42,8 +46,21 @@ if ($charType && $_GET['charType']) {
     } else if ($opzioneScelta == '4') {
         $opzioneScelta = $simboli ;
     }
-    var_dump($opzioneScelta);
+    var_dump(strlen($opzioneScelta));
 };
+
+function generaPassword($opzioneScelta,) {
+    $lunghezzaMax = strlen($opzioneScelta) - 1;
+    $passowrd = '';
+
+
+    for ($i = 1; $i <= $lunghezzaPassword; $i++) {
+        $carattere = $opzioneScelta[rand(0, $lunghezzaMax)];
+        var_dump ($carattere);
+
+
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,21 +75,22 @@ if ($charType && $_GET['charType']) {
 <legend>Cosa vuoi includere?</legend>
 <form method="GET" action="index.php">
     <div>
-      <input type="checkbox" id="coding" name="charType[]" value="1" />
+      <input type="checkbox" id="coding" name="caratteriScelti[]" value="1" />
       <label for="coding">Lettere Minuscole</label>
     </div>
     <div>
-      <input type="checkbox" id="music" name="charType[]" value="2" />
+      <input type="checkbox" id="music" name="caratteriScelti[]" value="2" />
       <label for="music">Lettere Maiuscole</label>
     </div>
     <div>
-      <input type="checkbox" id="music" name="charType[]" value="3" />
+      <input type="checkbox" id="music" name="caratteriScelti[]" value="3" />
       <label for="music">Numeri</label>
     </div>
     <div>
-      <input type="checkbox" id="music" name="charType[]" value="4" />
+      <input type="checkbox" id="music" name="caratteriScelti[]" value="4" />
       <label for="music">Caratteri speciali</label>
     </div>
+    <input type="number" name='lunghezzaPassword'>
     
 
     <button> vai!</button>

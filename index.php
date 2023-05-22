@@ -10,10 +10,15 @@ $passwordFinale = '';
 
 $caratteriScelti = isset($_GET['caratteriScelti']);
 $lunghezzaPassword = isset($_GET['lunghezzaPassword']);
+$ripetizione = isset($_GET['lettereRepeat']);
 
 if ($lunghezzaPassword && $_GET['lunghezzaPassword']) {
     $lunghezzaPassword = $_GET['lunghezzaPassword'];
 };
+
+if ($ripetizione && $_GET['lettereRepeat']) {
+    $ripetizione = $_GET['lettereRepeat'];
+}
 
 if ($caratteriScelti && $_GET['caratteriScelti']) {
     
@@ -47,13 +52,22 @@ if ($caratteriScelti && $_GET['caratteriScelti']) {
     }
 };
 
-function generaPassword($opzioneScelta,$lunghezzaPassword) {
+function generaPassword($opzioneScelta,$lunghezzaPassword,$ripetizione) {
     $lunghezzaMax = strlen($opzioneScelta) - 1;
     $password = '';
 
     for ($i = 1; $i <= $lunghezzaPassword; $i++) {
         $carattere = $opzioneScelta[rand(0, $lunghezzaMax)];
-        $password .= $carattere;
+        
+        if ($ripetizione == 1) {
+            if (str_contains($password, $carattere)){
+                $i--;
+            }else {
+                $password .= $carattere;
+            }
+        } else {
+            $password .= $carattere;
+        }
     }
     return  $password;
 
@@ -74,6 +88,11 @@ function generaPassword($opzioneScelta,$lunghezzaPassword) {
 <legend>Cosa vuoi includere?</legend>
 <form method="GET" action="index.php">
     <div>
+        <label for="coding">Lettere ripetetute</label>
+        <input type="radio" id="coding" name="lettereRepeat" value="0" /><span>si</span>
+        <input type="radio" id="coding" name="lettereRepeat" value="1" /><span>no</span>
+    </div>
+    <div>
       <input type="checkbox" id="coding" name="caratteriScelti[]" value="1" />
       <label for="coding">Lettere Minuscole</label>
     </div>
@@ -93,7 +112,7 @@ function generaPassword($opzioneScelta,$lunghezzaPassword) {
     <button> vai!</button>    
     <p>
         <?php if ($opzioneScelta !== '') {
-            $passwordFinale = generaPassword($opzioneScelta,$lunghezzaPassword);
+            $passwordFinale = generaPassword($opzioneScelta,$lunghezzaPassword,$ripetizione);
             echo "LA TUA PASSWORD E' : " . $passwordFinale;
         }
         ?>

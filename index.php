@@ -39,25 +39,25 @@ include __DIR__ . '/components/variables.php';
                 </div>
                 <div class="col-6 row flex-column mt-2">
                     <div>
-                        <input type="radio" id="coding" name="lettereRepeat" value="si" required/><span>si</span>
+                        <input type="radio"  name="lettereRepeat" value="si" required/><span>si</span>
                     </div>
                     <div>
-                        <input type="radio" id="coding" name="lettereRepeat" value="no" /><span>no</span>
+                        <input type="radio"  name="lettereRepeat" value="no" /><span>no</span>
                     </div>
                     <div class="mt-3">
-                      <input type="checkbox" id="coding" name="caratteriScelti[]" value="1" />
+                      <input type="checkbox"  name="caratteriScelti[]" value="1" />
                       <label for="caratteri">Lettere Minuscole</label>
                     </div>
                     <div>
-                      <input type="checkbox" id="music" name="caratteriScelti[]" value="2" />
+                      <input type="checkbox" name="caratteriScelti[]" value="2" />
                       <label for="caratteri">Lettere Maiuscole</label>
                     </div>
                     <div>
-                      <input type="checkbox" id="music" name="caratteriScelti[]" value="3" />
+                      <input type="checkbox"  name="caratteriScelti[]" value="3" />
                       <label for="caratteri">Numeri</label>
                     </div>
                     <div>
-                      <input type="checkbox" id="music" name="caratteriScelti[]" value="4" />
+                      <input type="checkbox"  name="caratteriScelti[]" value="4" />
                       <label for="caratteri">Caratteri speciali</label>
                     </div>
                 </div>

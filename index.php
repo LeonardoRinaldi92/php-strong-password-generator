@@ -21,7 +21,6 @@ include __DIR__ . '/components/variables.php';
             Genera una password sicura
         </h2>
     </div>
-
     <div class="col-12 container2 row">
         <form method="GET" action="index.php">
             <div class="col-12 row">
@@ -36,30 +35,30 @@ include __DIR__ . '/components/variables.php';
             </div>
             <div class="col-12 row">
                 <div class="col-6">
-                    <label for="coding">Lettere ripetetute</label>
+                    <label for="lettereRepeat">Lettere ripetetute</label>
                 </div>
                 <div class="col-6 row flex-column mt-2">
                     <div>
-                        <input type="radio" id="coding" name="lettereRepeat" value="0" required/><span>si</span>
+                        <input type="radio" id="coding" name="lettereRepeat" value="si" required/><span>si</span>
                     </div>
                     <div>
-                        <input type="radio" id="coding" name="lettereRepeat" value="1" /><span>no</span>
+                        <input type="radio" id="coding" name="lettereRepeat" value="no" /><span>no</span>
                     </div>
                     <div class="mt-3">
                       <input type="checkbox" id="coding" name="caratteriScelti[]" value="1" />
-                      <label for="coding">Lettere Minuscole</label>
+                      <label for="caratteri">Lettere Minuscole</label>
                     </div>
                     <div>
                       <input type="checkbox" id="music" name="caratteriScelti[]" value="2" />
-                      <label for="music">Lettere Maiuscole</label>
+                      <label for="caratteri">Lettere Maiuscole</label>
                     </div>
                     <div>
                       <input type="checkbox" id="music" name="caratteriScelti[]" value="3" />
-                      <label for="music">Numeri</label>
+                      <label for="caratteri">Numeri</label>
                     </div>
                     <div>
                       <input type="checkbox" id="music" name="caratteriScelti[]" value="4" />
-                      <label for="music">Caratteri speciali</label>
+                      <label for="caratteri">Caratteri speciali</label>
                     </div>
                 </div>
             </div>

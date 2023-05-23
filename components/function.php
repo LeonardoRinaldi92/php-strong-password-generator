@@ -1,6 +1,6 @@
 <?php function generaPassword($opzioneScelta,$lunghezzaPassword,$ripetizione) {
     $lunghezzaMax = strlen($opzioneScelta) - 1;
-    if ($ripetizione == 1 && $lunghezzaPassword > $lunghezzaMax ){
+    if ($ripetizione == 'no' && $lunghezzaPassword > $lunghezzaMax ){
         $lunghezzaPassword = $lunghezzaMax;
     }
     $password = '';
@@ -8,7 +8,7 @@
     for ($i = 1; $i <= $lunghezzaPassword; $i++) {
         $carattere = $opzioneScelta[rand(0, $lunghezzaMax)];
         
-        if ($ripetizione == 1) {
+        if ($ripetizione == 'no') {
             if (str_contains($password, $carattere)){
                 $i--;
             }else {

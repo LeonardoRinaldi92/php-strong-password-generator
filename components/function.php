@@ -6,6 +6,7 @@
     $password = '';
 
     for ($i = 1; $i <= $lunghezzaPassword; $i++) {
+        str_shuffle($opzioneScelta);
         $carattere = $opzioneScelta[rand(0, $lunghezzaMax)];
         
         if ($ripetizione == 'no') {
